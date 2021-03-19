@@ -14,20 +14,24 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection){
-  let playerChoice = playerSelection.charAt(0).toUpperCase().concat(playerSelection.toLowerCase().slice(1));
+  let playerChoice = capitalizeString(playerSelection);
   if ((playerChoice === "Rock" && computerSelection === "Scissors") 
-    || (playerChoice === "Paper" && computerSelection === "Rock") 
-    || (playerChoice === "Scissors" && computerSelection === "Paper")) {
-    return `You Win! ${playerChoice} beats ${computerSelection}`;
+        || (playerChoice === "Paper" && computerSelection === "Rock") 
+        || (playerChoice === "Scissors" && computerSelection === "Paper")) {
+      return `You Win! ${playerChoice} beats ${computerSelection}`;
   } else if ((playerChoice === "Scissors" && computerSelection === "Rock")
-    || (playerChoice === "Rock" && computerSelection === "Paper")
-    || (playerChoice === "Paper" && computerSelection === "Scissors")) {
-    return `You Lose. ${computerSelection} beats ${playerChoice}`;
+        || (playerChoice === "Rock" && computerSelection === "Paper")
+        || (playerChoice === "Paper" && computerSelection === "Scissors")) {
+      return `You Lose. ${computerSelection} beats ${playerChoice}`;
   } else if (playerChoice === computerSelection) {
-    return "It's a Tie.";
+      return "It's a Tie.";
   } else {
-    return "Something went very wrong. :(";
+      return "Something went very wrong. :(";
   }
+}
+
+function capitalizeString(txt) {
+  return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 }
 
 function game() {
@@ -43,7 +47,7 @@ function game() {
     } else if (result.charAt(4) === 'L') {
       computerScore += 1;
     } else {}
-    console.log(`Score: Player - ${playerScore} to Computer - ${computerScore}`);
+    console.log(`Score: Player-${playerScore} to Computer-${computerScore}`);
   }
   if (playerScore > computerScore) {
     console.log("You Won the Game!");
