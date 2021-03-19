@@ -13,8 +13,7 @@ function computerPlay() {
   }
 }
 
-function playRound(playerSelection, computerSelection){
-  let playerChoice = capitalizeString(playerSelection);
+function playRound(playerChoice, computerSelection){
   if ((playerChoice === "Rock" && computerSelection === "Scissors") 
         || (playerChoice === "Paper" && computerSelection === "Rock") 
         || (playerChoice === "Scissors" && computerSelection === "Paper")) {
@@ -58,6 +57,23 @@ function game() {
   }
 }
 
+const rockBtn = document.querySelector('#pc-rock');
+rockBtn.addEventListener('click', () => {
+  console.log("You Chose Rock");
+  console.log(playRound("Rock", computerPlay()));
+});
+
+const paperBtn = document.querySelector('#pc-paper');
+paperBtn.addEventListener('click', () => {
+  console.log("You Chose Paper");
+  console.log(playRound("Paper", computerPlay()));
+});
+
+const scissorsBtn = document.querySelector('#pc-scissors');
+scissorsBtn.addEventListener('click', () => {
+  console.log("You Chose Scissors");
+  console.log(playRound("Scissors", computerPlay()));
+});
 
 //paper > rock
 //rock > scissors
