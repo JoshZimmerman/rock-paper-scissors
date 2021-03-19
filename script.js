@@ -57,13 +57,16 @@ function game() {
   }
 }
 
-const rockBtn = document.querySelector('#pc-rock');
-rockBtn.addEventListener('click', () => {
-  console.log("You Chose Rock");
-  console.log(playRound("Rock", computerPlay()));
+
+const cards = document.querySelectorAll('.player-card');
+cards.forEach( playerCard => {playerCard.addEventListener('click', function(e) {
+  console.log(`You Chose ${e.target.textContent}`);
+  console.log(playRound(e.target.textContent, computerPlay()));
+  });
 });
 
-const paperBtn = document.querySelector('#pc-paper');
+
+/*const paperBtn = document.querySelector('#pc-paper');
 paperBtn.addEventListener('click', () => {
   console.log("You Chose Paper");
   console.log(playRound("Paper", computerPlay()));
@@ -73,7 +76,7 @@ const scissorsBtn = document.querySelector('#pc-scissors');
 scissorsBtn.addEventListener('click', () => {
   console.log("You Chose Scissors");
   console.log(playRound("Scissors", computerPlay()));
-});
+});*/
 
 //paper > rock
 //rock > scissors
