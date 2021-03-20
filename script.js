@@ -6,7 +6,6 @@ let compScore = 0;
 //the computer will randomly choose rock, paper, or scissors
 function computerPlay() {
   let randomNum = Math.floor(Math.random() * 3);
-  
   if (randomNum === 0) {
     return "Rock";
   } else if (randomNum === 1) {
@@ -36,7 +35,7 @@ function roundWin() {
   //winnng tasks
   updateText("You won this round!", "results");
   playerScore++;
-  document.getElementById("playerscore").innerText = playerScore;
+  document.getElementById("player-score").innerText = playerScore;
   checkVictory(playerScore, compScore);
 }
 
@@ -44,7 +43,7 @@ function roundLose() {
   //losing tasks
   updateText("You lost this round.", "results");
   compScore++;
-  document.getElementById("compscore").innerText = compScore;
+  document.getElementById("comp-score").innerText = compScore;
   checkVictory(playerScore, compScore);
 }
 
@@ -54,7 +53,8 @@ function roundTie() {
 }
 
 function error() {
-  updateText("Something went very wrong. :(", "results");
+  alert("Something went very wrong. :(");
+  fullReset();
 }
 
 function updateText(text, id) {
@@ -78,31 +78,14 @@ function gameReset() {
   compScore = 0;
 }
 
-
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  for (i = 0; i < 5; i++){
-    let playerSelection = prompt("Type 'Rock', 'Paper', or 'Scissors'");
-    let computerSelection = computerPlay();
-    let result = playRound(playerSelection, computerSelection);
-    console.log(result);
-    if (result.charAt(4) === 'W') {
-      playerScore += 1;
-    } else if (result.charAt(4) === 'L') {
-      computerScore += 1;
-    } else {}
-    console.log(`Score: Player-${playerScore} to Computer-${computerScore}`);
-  }
-  if (playerScore > computerScore) {
-    console.log("You Won the Game!");
-  } else if (computerScore > playerScore){
-    console.log("You Lost the Game.");
-  } else {
-    console.log("The Game ended in a draw.");
-  }
+function fullReset() {
+  playerScore = 0;
+  compScore = 0;
+  updateText("", "results");
+  updateText("", "final-result");
+  updateText(playerScore, "player-score");
+  updateText(compScore, "comp-score")
 }
-
 
 const cards = document.querySelectorAll('.player-card');
 cards.forEach( playerCard => {playerCard.addEventListener('click', function(e) {

@@ -4,18 +4,36 @@
   <title>Rock Paper Scissors!</title>
   <meta charset="UTF-8"/>
   <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
 </head>
 <body>
-  <h3>Make your choice!</h3>
-  <button class="player-card" type="button" id="pc-rock">Rock</button>
-  <button class="player-card" type="button" id="pc-paper">Paper</button>
-  <button class="player-card" type="button" id="pc-scissors">Scissors</button>
-  <div class="results-container">
-    <p id="results"> </p>
-    <p>Current Score:</p>
-    <p>Player: <span id=playerscore>0</span></p>
-    <p>Opponent: <span id=compscore>0</span></p>
-    <p id="final-result"> </p>
+  <header class="head">
+    <h1 id=title>Rock Paper Scissors</h1>
+  </header>
+  <div class="game-area">
+    <div class="score-container player-score">
+      <p>Player</p>
+      <p>Score:</p>
+      <p id="player-score">0</p>
+    </div>
+    <div class="game-board">
+      <div class="comp-card" id="comp-rock">Rock</div>
+      <div class="comp-card" id="comp-paper">Paper</div>
+      <div class="comp-card" id="comp-scissors">Scissors</div>
+      <div class="results-container">
+        <p id="results"> </p>
+        <p id="final-result"> </p>
+      </div>
+      <button class="player-card" type="button" id="pc-rock">Rock</button>
+      <button class="player-card" type="button" id="pc-paper">Paper</button>
+      <button class="player-card" type="button" id="pc-scissors">Scissors</button>
+    </div>
+    <div class="score-container comp-score">
+      <p>Opponent</p>
+      <p>Score:</p>
+      <p id="comp-score">0</p>
+    </div>
   </div>
 </body>
 <script type="text/javascript" async="" src="./script.js"></script>
