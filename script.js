@@ -35,14 +35,16 @@ function playRound(playerChoice, computerSelection){
 function roundWin() {
   //winnng tasks
   updateText("You won this round!", "results");
-  updateScores("player");
+  playerScore++;
+  document.getElementById("playerscore").innerText = playerScore;
   checkVictory(playerScore, compScore);
 }
 
 function roundLose() {
   //losing tasks
   updateText("You lost this round.", "results");
-  updateScores("computer");
+  compScore++;
+  document.getElementById("compscore").innerText = compScore;
   checkVictory(playerScore, compScore);
 }
 
@@ -55,20 +57,9 @@ function error() {
   updateText("Something went very wrong. :(", "results");
 }
 
-function updateScores(winner) {
-  if (winner === "player") {
-    playerScore++;
-  } else if (winner === "computer") {
-    compScore++;
-  }
-  document.getElementById("playerscore").innerText = playerScore;
-  document.getElementById("compscore").innerText = compScore;
-}
-
 function updateText(text, id) {
   document.getElementById(id).innerText = text;
 }
-
 
 function checkVictory(playerScore, computerScore) {
   if (playerScore === 5) {
