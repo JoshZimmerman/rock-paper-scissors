@@ -1,5 +1,8 @@
 console.log("Welcome to my Rock, Paper, Scissors Game");
 
+let playerScore = 0;
+let compScore = 0;
+
 //the computer will randomly choose rock, paper, or scissors
 function computerPlay() {
   let randomNum = Math.floor(Math.random() * 3);
@@ -17,21 +20,73 @@ function playRound(playerChoice, computerSelection){
   if ((playerChoice === "Rock" && computerSelection === "Scissors") 
         || (playerChoice === "Paper" && computerSelection === "Rock") 
         || (playerChoice === "Scissors" && computerSelection === "Paper")) {
-      return `You Win! ${playerChoice} beats ${computerSelection}`;
+      roundWin();
   } else if ((playerChoice === "Scissors" && computerSelection === "Rock")
         || (playerChoice === "Rock" && computerSelection === "Paper")
         || (playerChoice === "Paper" && computerSelection === "Scissors")) {
-      return `You Lose. ${computerSelection} beats ${playerChoice}`;
+      roundLose();
   } else if (playerChoice === computerSelection) {
-      return "It's a Tie.";
+      roundTie();
   } else {
-      return "Something went very wrong. :(";
+      error()
   }
 }
 
-function capitalizeString(txt) {
-  return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+function roundWin() {
+  //winnng tasks
+  updateText("You won this round!", "results");
+  updateScores("player");
+  checkVictory(playerScore, compScore);
 }
+
+function roundLose() {
+  //losing tasks
+  updateText("You lost this round.", "results");
+  updateScores("computer");
+  checkVictory(playerScore, compScore);
+}
+
+function roundTie() {
+  //tied round tasks
+  updateText("It's a tie.", "results")
+}
+
+function error() {
+  updateText("Something went very wrong. :(", "results");
+}
+
+function updateScores(winner) {
+  if (winner === "player") {
+    playerScore++;
+  } else if (winner === "computer") {
+    compScore++;
+  }
+  document.getElementById("playerscore").innerText = playerScore;
+  document.getElementById("compscore").innerText = compScore;
+}
+
+function updateText(text, id) {
+  document.getElementById(id).innerText = text;
+}
+
+
+function checkVictory(playerScore, computerScore) {
+  if (playerScore === 5) {
+    updateText("You won the game!", "final-result");
+    gameReset();
+  } else if (computerScore === 5) {
+    updateText("You Lost the game, better luck next time.", "final-result");
+    gameReset();
+  } else {
+    return updateText("Another Round?", "final-result");
+  }
+}
+
+function gameReset() {
+  playerScore = 0;
+  compScore = 0;
+}
+
 
 function game() {
   let playerScore = 0;
@@ -61,22 +116,11 @@ function game() {
 const cards = document.querySelectorAll('.player-card');
 cards.forEach( playerCard => {playerCard.addEventListener('click', function(e) {
   console.log(`You Chose ${e.target.textContent}`);
-  console.log(playRound(e.target.textContent, computerPlay()));
+  playRound(e.target.textContent, computerPlay());
   });
 });
 
 
-/*const paperBtn = document.querySelector('#pc-paper');
-paperBtn.addEventListener('click', () => {
-  console.log("You Chose Paper");
-  console.log(playRound("Paper", computerPlay()));
-});
-
-const scissorsBtn = document.querySelector('#pc-scissors');
-scissorsBtn.addEventListener('click', () => {
-  console.log("You Chose Scissors");
-  console.log(playRound("Scissors", computerPlay()));
-});*/
 
 //paper > rock
 //rock > scissors
