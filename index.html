@@ -3,6 +3,7 @@
 <head>
   <title>Rock Paper Scissors!</title>
   <meta charset="UTF-8"/>
+  <link rel="shortcut icon" type="image/x-icon" href="images/icon.png"/>
   <link rel="stylesheet" href="./style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
@@ -18,9 +19,42 @@
       <p id="player-score">0</p>
     </div>
     <div class="game-board">
-      <div class="comp-card" id="comp-rock">Rock</div>
-      <div class="comp-card" id="comp-paper">Paper</div>
-      <div class="comp-card" id="comp-scissors">Scissors</div>
+      <div class="comp-card flip-card" id="comp-rock">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/pixil-frame-0.png" alt="Blue card back"
+              class="blue-card-back-img">
+          </div>
+          <div class="flip-card-back">
+            <img src="images/blue-rock.png" alt="Rock" class="blue-rock-img">
+            <p>Rock</p>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card flip-card" id="comp-paper">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/pixil-frame-0.png" alt="Blue card back"
+              class="blue-card-back-img">
+          </div>
+          <div class="flip-card-back">
+            <img src="images/blue-paper.png" alt="Paper" class="blue-pap-img">
+            <p>Paper</p>
+          </div>
+        </div>
+      </div>
+      <div class="comp-card flip-card" id="comp-scissors">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/pixil-frame-1.png" alt="Blue card back"
+              class="blue-card-back-img">
+          </div>
+          <div class="flip-card-back">
+            <img src="images/blue-scissors.png" alt="Scissors" class="blue-sci-img">
+            <p>Scissors</p>
+          </div>
+        </div>
+      </div>
       <div class="results-container">
         <p id="results"> </p>
         <p id="final-result"> </p>
@@ -35,6 +69,9 @@
       <p id="comp-score">0</p>
     </div>
   </div>
+  <footer>
+
+  </footer>
 </body>
 <script type="text/javascript" async="" src="./script.js"></script>
 </html>
