@@ -3,6 +3,7 @@ console.log("Welcome to my Rock, Paper, Scissors Game");
 let playerScore = 0;
 let compScore = 0;
 
+
 //the computer will randomly choose rock, paper, or scissors
 function computerPlay() {
   let randomNum = Math.floor(Math.random() * 3);
@@ -16,6 +17,7 @@ function computerPlay() {
 }
 
 function playRound(playerChoice, computerSelection){
+  roundReset();
   if ((playerChoice === "Rock" && computerSelection === "Scissors") 
         || (playerChoice === "Paper" && computerSelection === "Rock") 
         || (playerChoice === "Scissors" && computerSelection === "Paper")) {
@@ -29,6 +31,18 @@ function playRound(playerChoice, computerSelection){
   } else {
       error()
   }
+  playAnimations(computerSelection);
+}
+
+function roundReset() {
+  unFlip('comp-rock-inner');
+  unFlip('comp-paper-inner');
+  unFlip('comp-scissors-inner');
+}
+
+function playAnimations(computerSelection) {
+  console.log(computerSelection);
+  cardFlip(`comp-${computerSelection.toLowerCase()}-inner`);
 }
 
 function roundWin() {
@@ -50,6 +64,7 @@ function roundLose() {
 function roundTie() {
   //tied round tasks
   updateText("It's a tie.", "results")
+  //Update text with an array of phrases to cycle through
 }
 
 function error() {
@@ -63,39 +78,66 @@ function updateText(text, id) {
 
 function checkVictory(playerScore, computerScore) {
   if (playerScore === 5) {
-    updateText("You won the game!", "final-result");
+    updateText("You Won the game!", "results");
     gameReset();
   } else if (computerScore === 5) {
-    updateText("You Lost the game, better luck next time.", "final-result");
+    updateText("You Lost the game.", "results");
     gameReset();
   } else {
-    return updateText("Another Round?", "final-result");
+    //return updateText("Another Round?", "final-result");
   }
 }
 
 function gameReset() {
   playerScore = 0;
   compScore = 0;
+  updateText("Play Again?", "final-result");
 }
 
 function fullReset() {
   playerScore = 0;
   compScore = 0;
+  roundReset();
   updateText("", "results");
   updateText("", "final-result");
   updateText(playerScore, "player-score");
   updateText(compScore, "comp-score")
 }
 
-const cards = document.querySelectorAll('.player-card');
+function cardFlip(id) {
+  document.getElementById(id).classList.add('flip-over-card');
+}
+
+function unFlip(id) {
+  document.getElementById(id).classList.remove('flip-over-card');
+}
+
+//Set up eventListeners
+const cards = document.querySelectorAll('.overlay');
 cards.forEach( playerCard => {playerCard.addEventListener('click', function(e) {
-  console.log(`You Chose ${e.target.textContent}`);
-  playRound(e.target.textContent, computerPlay());
-  });
+    if (document.getElementById("final-result").textContent) {
+      fullReset();
+    } else {
+    console.log(e.target);
+    console.log(`You Chose ${e.target.parentElement.innerText}`);
+    playRound(e.target.parentElement.innerText, computerPlay());
+  }});
 });
 
+const oppCards = document.querySelectorAll('.comp-card');
+oppCards.forEach(oppCard => {
+    oppCard.addEventListener('mouseover', function(e) {
+      console.log(e.target);
+      updateText("Hey, no cheating", "results");
+    });
+    oppCard.addEventListener('mouseout', function(e) {
+      console.log(e.target);
+      updateText("", "results");
+    });
+});
 
-
-//paper > rock
-//rock > scissors
-//scissors > paper
+const playAgain = document.getElementById('final-result');
+playAgain.addEventListener('click', function(e) {
+  console.log(e);
+  fullReset();
+});

@@ -20,38 +20,38 @@
     </div>
     <div class="game-board">
       <div class="comp-card flip-card" id="comp-rock">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner" id="comp-rock-inner">
           <div class="flip-card-front">
             <img src="images/pixil-frame-0.png" alt="Blue card back"
               class="blue-card-back-img">
           </div>
           <div class="flip-card-back">
-            <img src="images/blue-rock.png" alt="Rock" class="blue-rock-img">
-            <p>Rock</p>
+            <img src="images/bluewhite-rock.png" alt="Rock" class="blue-rock-img">
+            <p class="blue-text">Rock</p>
           </div>
         </div>
       </div>
       <div class="comp-card flip-card" id="comp-paper">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner" id="comp-paper-inner">
           <div class="flip-card-front">
             <img src="images/pixil-frame-0.png" alt="Blue card back"
               class="blue-card-back-img">
           </div>
           <div class="flip-card-back">
-            <img src="images/blue-paper.png" alt="Paper" class="blue-pap-img">
-            <p>Paper</p>
+            <img src="images/bluewhite-paper.png" alt="Paper" class="blue-pap-img">
+            <p class="blue-text">Paper</p>
           </div>
         </div>
       </div>
       <div class="comp-card flip-card" id="comp-scissors">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner" id="comp-scissors-inner">
           <div class="flip-card-front">
-            <img src="images/pixil-frame-1.png" alt="Blue card back"
+            <img src="images/pixil-frame-0.png" alt="Blue card back"
               class="blue-card-back-img">
           </div>
           <div class="flip-card-back">
-            <img src="images/blue-scissors.png" alt="Scissors" class="blue-sci-img">
-            <p>Scissors</p>
+            <img src="images/bluewhite-scissors.png" alt="Scissors" class="blue-sci-img">
+            <p class="blue-text">Scissors</p>
           </div>
         </div>
       </div>
@@ -59,9 +59,45 @@
         <p id="results"> </p>
         <p id="final-result"> </p>
       </div>
-      <button class="player-card" type="button" id="pc-rock">Rock</button>
-      <button class="player-card" type="button" id="pc-paper">Paper</button>
-      <button class="player-card" type="button" id="pc-scissors">Scissors</button>
+      <div class="player-card flip-card" id="pc-rock">
+        <div class="flip-card-inner" id="pc-rock-inner">
+          <div class="flip-card-front">
+            <img src="images/pixil-frame-1.png" alt="Red card back"
+              class="red-card-back-img">
+          </div>
+          <div class="flip-card-back pc-face">
+            <img src="images/redwhite-rock.png" alt="Rock" class="red-rock-img">
+            <p class="red-text">Rock</p>
+            <div class=overlay></div>
+          </div>
+        </div>
+      </div>
+      <div class="player-card flip-card" id="pc-paper">
+        <div class="flip-card-inner" id="pc-paper-inner">
+          <div class="flip-card-front">
+            <img src="images/pixil-frame-1.png" alt="Red card back"
+              class="red-card-back-img">
+          </div>
+          <div class="flip-card-back pc-face">
+            <img src="images/redwhite-paper.png" alt="Paper" class="red-pap-img">
+            <p class="red-text">Paper</p>
+            <div class=overlay></div>
+          </div>
+        </div>
+      </div>
+      <div class="player-card flip-card" id="pc-scissors">
+        <div class="flip-card-inner" id="pc-scissors-inner">
+          <div class="flip-card-front">
+            <img src="images/pixil-frame-1.png" alt="Red card back"
+              class="red-card-back-img">
+          </div>
+          <div class="flip-card-back pc-face">
+            <img src="images/redwhite-scissors.png" alt="Scissors" class="red-sci-img">
+            <p class="red-text">Scissors</p>
+            <div class=overlay></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="score-container comp-score">
       <p>Opponent</p>
@@ -70,7 +106,11 @@
     </div>
   </div>
   <footer>
-
+    <a href="https://github.com/JoshZimmerman/"><img src="images/pixel-git.png"
+      alt="Git logo"> 
+  </a>
+    <p id="footer-text">Created by 
+      <a href="https://github.com/JoshZimmerman/">Josh Zimmerman</a>.</p>
   </footer>
 </body>
 <script type="text/javascript" async="" src="./script.js"></script>

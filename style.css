@@ -17,6 +17,9 @@ body {
   color: var(--color-font);
   background-color: var(--color-background);
   min-width: 740px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   
 }
 button {
@@ -36,6 +39,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  border: double;
+  border-width: 6px;
+  border-color: white;
+  border-radius: 6px;
+  
 }
 .score-container {
   text-align: center;
@@ -54,7 +62,10 @@ button {
   grid-template-columns: auto 110px 110px 110px auto;
   grid-template-rows: 20px 154px auto 154px 20px;
   column-gap: 20px;
-
+  border-left: groove;
+  border-right: groove;
+  border-color: white;
+  border-width: 3px;
 }
 .comp-card {
   background-color: var(--color-cardback-blue);
@@ -62,6 +73,7 @@ button {
   grid-row: 2 / 3;
   font-size: 13px;
   text-align: center;
+  color: var(--color-cardback-blue);
 }
 
 .results-container {
@@ -89,8 +101,15 @@ button {
   border-radius: 8px;
   box-sizing: border-box;
 }
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+.comp-card:hover .flip-card-inner{
+  transform: rotateY(30deg);
+}
+.player-card:hover .flip-card-inner {
+  transform: rotateY(180deg) translateY(-10px);
+  cursor: pointer;
+}
+.flip-over-card {
+  transform: rotateY(180deg) translateY(10px);
 }
 .flip-card-front, .flip-card-back {
   position: absolute;
@@ -104,31 +123,56 @@ button {
 .blue-card-back-img {
   border-radius: 8px;
 }
+.red-card-back-img {
+  border-radius: 8px;
+}
 .flip-card-front {
   background-color: var(--color-cardback-blue);
-  border-style: solid;
-  border: 10px;
-  border-color: black;
   color: black;
 }
 .flip-card-back {
-  background-color:var(--color-cardback-blue);
-  color: white;
+  background-color: white;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: center;
 }
+.player-card:active {
+  transform: translateY(-5px);
+}
 .blue-sci-img, .blue-pap-img, .blue-rock-img{
-  padding-top: 5px;
+  padding-top: 10px;
   height: 100px;
   width: 100px;
   margin: 0 auto;
 }
+.red-sci-img, .red-pap-img, .red-rock-img {
+  padding-top: 10px;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+}
+.blue-text, .red-text {
+  padding-bottom: 10px;
+}
+.blue-text {
+  color: var(--color-cardback-blue);
+}
+.red-text {
+  color: var(--color-cardback-red);
+}
 .player-card {
   grid-row: 4 / 5;
   font-size: 12px;
+  color: var(--color-cardback-red);
+}
+.overlay {
+  position: absolute;
+  opacity: 0%;
+  height:100%;
+  width:100%;
+  border-radius: 8px;
 }
 #pc-rock, #comp-rock{
   grid-column: 2 / 3;
@@ -139,9 +183,35 @@ button {
 #pc-scissors, #comp-scissors {
   grid-column: 4 / 5;
 }
+#final-result {
+  cursor: pointer;
+  padding-top: 10px;
+}
 p {
   margin: 3px;
 }
 h1 {
   margin: 0;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  text-decoration: underline;
+}
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-content: center;
+  line-height: 16px;
+  padding: 0;
+  margin: 5px 0;
+  bottom: 0;
+  width: 100%;
+}
+#footer-text {
+  margin: 0;
+  padding-left: 10px;
 }
