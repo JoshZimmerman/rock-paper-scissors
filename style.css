@@ -6,11 +6,13 @@
   --color-cardback-red: rgb(175, 36, 36);
   --color-table-background: #155e25;
 }
+
 body, html {
   margin: 0px;
   padding: 0px;
   height: 100%;
 }
+
 body {
   font-family: 'Press Start 2P', cursive;
   font-size: 14px;
@@ -22,17 +24,15 @@ body {
   justify-content: space-between;
   
 }
-button {
-  font-family: 'Press Start 2P', cursive;
-}
+
 .head {
   width: 100%;
   height: 60px;
   line-height: 60px;
   margin: 0;
   text-align: center;
-
 }
+
 .game-area {
   margin: 0 auto;
   max-width: 800px;
@@ -43,17 +43,19 @@ button {
   border-width: 6px;
   border-color: white;
   border-radius: 6px;
-  
 }
+
 .score-container {
   text-align: center;
   width: 120px;
   margin: 0;
 }
+
 #player-score, #comp-score {
   margin: 15px;
   font-size: 18px;
 }
+
 .game-board {
   background-color: var(--color-g-background);
   height: 500px;
@@ -62,11 +64,8 @@ button {
   grid-template-columns: auto 110px 110px 110px auto;
   grid-template-rows: 20px 154px auto 154px 20px;
   column-gap: 20px;
-  border-left: groove;
-  border-right: groove;
-  border-color: white;
-  border-width: 3px;
 }
+
 .comp-card {
   background-color: var(--color-cardback-blue);
   border-radius: 8px;
@@ -82,6 +81,7 @@ button {
   align-self: center;
   text-align: center;
 }
+
 .flip-card {
   background-color: transparent;
   perspective: 1000px;
@@ -90,6 +90,7 @@ button {
   width: 110px;
   
 }
+
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -101,16 +102,20 @@ button {
   border-radius: 8px;
   box-sizing: border-box;
 }
+
 .comp-card:hover .flip-card-inner{
   transform: rotateY(30deg);
 }
+
 .player-card:hover .flip-card-inner {
   transform: rotateY(180deg) translateY(-10px);
   cursor: pointer;
 }
+
 .flip-over-card {
   transform: rotateY(180deg) translateY(10px);
 }
+
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
@@ -120,16 +125,20 @@ button {
   border-radius: 8px;
   box-sizing: border-box;
 }
+
 .blue-card-back-img {
   border-radius: 8px;
 }
+
 .red-card-back-img {
   border-radius: 8px;
 }
+
 .flip-card-front {
   background-color: var(--color-cardback-blue);
   color: black;
 }
+
 .flip-card-back {
   background-color: white;
   transform: rotateY(180deg);
@@ -138,35 +147,43 @@ button {
   justify-content: space-around;
   align-content: center;
 }
+
 .player-card:active {
   transform: translateY(-5px);
 }
+
 .blue-sci-img, .blue-pap-img, .blue-rock-img{
   padding-top: 10px;
   height: 100px;
   width: 100px;
   margin: 0 auto;
 }
+
 .red-sci-img, .red-pap-img, .red-rock-img {
   padding-top: 10px;
   height: 100px;
   width: 100px;
   margin: 0 auto;
 }
+
 .blue-text, .red-text {
   padding-bottom: 10px;
 }
+
 .blue-text {
   color: var(--color-cardback-blue);
 }
+
 .red-text {
   color: var(--color-cardback-red);
 }
+
 .player-card {
   grid-row: 4 / 5;
   font-size: 12px;
   color: var(--color-cardback-red);
 }
+
 .overlay {
   position: absolute;
   opacity: 0%;
@@ -174,32 +191,41 @@ button {
   width:100%;
   border-radius: 8px;
 }
+
 #pc-rock, #comp-rock{
   grid-column: 2 / 3;
 }
+
 #pc-paper, #comp-paper {
   grid-column: 3 / 4;
 }
+
 #pc-scissors, #comp-scissors {
   grid-column: 4 / 5;
 }
+
 #final-result {
   cursor: pointer;
   padding-top: 10px;
 }
+
 p {
   margin: 3px;
 }
+
 h1 {
   margin: 0;
 }
+
 a {
   text-decoration: none;
   color: white;
 }
+
 a:hover {
   text-decoration: underline;
 }
+
 footer {
   display: flex;
   flex-direction: row;
@@ -211,6 +237,7 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
 #footer-text {
   margin: 0;
   padding-left: 10px;

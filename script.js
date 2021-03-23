@@ -2,9 +2,9 @@ console.log("Welcome to my Rock, Paper, Scissors Game");
 
 let playerScore = 0;
 let compScore = 0;
+let tieTextIndex = 0;
 
-
-//the computer will randomly choose rock, paper, or scissors
+//Game Logic
 function computerPlay() {
   let randomNum = Math.floor(Math.random() * 3);
   if (randomNum === 0) {
@@ -34,17 +34,6 @@ function playRound(playerChoice, computerSelection){
   playAnimations(computerSelection);
 }
 
-function roundReset() {
-  unFlip('comp-rock-inner');
-  unFlip('comp-paper-inner');
-  unFlip('comp-scissors-inner');
-}
-
-function playAnimations(computerSelection) {
-  console.log(computerSelection);
-  cardFlip(`comp-${computerSelection.toLowerCase()}-inner`);
-}
-
 function roundWin() {
   //winnng tasks
   updateText("You won this round!", "results");
@@ -63,17 +52,13 @@ function roundLose() {
 
 function roundTie() {
   //tied round tasks
-  updateText("It's a tie.", "results")
-  //Update text with an array of phrases to cycle through
-}
-
-function error() {
-  alert("Something went very wrong. :(");
-  fullReset();
-}
-
-function updateText(text, id) {
-  document.getElementById(id).innerText = text;
+  let tieText = ["It's a tie.", "You tied again.", "Another tie."]
+  updateText(tieText[tieTextIndex], "results");
+  if (tieTextIndex < 2) {
+    tieTextIndex++;
+  } else {
+    tieTextIndex = 0;
+  }
 }
 
 function checkVictory(playerScore, computerScore) {
@@ -83,9 +68,19 @@ function checkVictory(playerScore, computerScore) {
   } else if (computerScore === 5) {
     updateText("You Lost the game.", "results");
     gameReset();
-  } else {
-    //return updateText("Another Round?", "final-result");
   }
+}
+
+function error() {
+  alert("Something went very wrong. :(");
+  fullReset();
+}
+
+//reset state functions
+function roundReset() {
+  unFlip('comp-rock-inner');
+  unFlip('comp-paper-inner');
+  unFlip('comp-scissors-inner');
 }
 
 function gameReset() {
@@ -97,11 +92,22 @@ function gameReset() {
 function fullReset() {
   playerScore = 0;
   compScore = 0;
+  tieTextIndex = 0;
   roundReset();
   updateText("", "results");
   updateText("", "final-result");
   updateText(playerScore, "player-score");
-  updateText(compScore, "comp-score")
+  updateText(compScore, "comp-score");
+}
+
+//DOM manipulation functions
+function updateText(text, id) {
+  document.getElementById(id).innerText = text;
+}
+
+function playAnimations(computerSelection) {
+  console.log(computerSelection);
+  cardFlip(`comp-${computerSelection.toLowerCase()}-inner`);
 }
 
 function cardFlip(id) {
