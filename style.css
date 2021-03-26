@@ -4,7 +4,7 @@
   --color-g-background: #23913b;
   --color-cardback-blue: rgb(31, 63, 206);
   --color-cardback-red: rgb(175, 36, 36);
-  --color-table-background: #155e25;
+  --color-table-background: #1c8031;
 }
 
 body, html {
@@ -57,7 +57,7 @@ body {
 }
 
 .game-board {
-  background-color: var(--color-g-background);
+  background-color: var(--color-table-background);
   height: 500px;
   width: 500px;
   display: grid;
