@@ -122,9 +122,9 @@ function unFlip(id) {
 const cards = document.querySelectorAll('.overlay');
 cards.forEach( playerCard => {playerCard.addEventListener('click', function(e) {
     if (document.getElementById("final-result").textContent) {
+      console.log('Game Reset')
       fullReset();
     } else {
-    console.log(e.target);
     console.log(`You Chose ${e.target.parentElement.innerText}`);
     playRound(e.target.parentElement.innerText, computerPlay());
   }});
